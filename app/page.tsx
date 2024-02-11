@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useExploreProfiles } from '@lens-protocol/react-web';
 import Link from 'next/link';
 import { formatPicture } from '../utils';
+import Navbar from './Navbar';
 
 export default function Home() {
   const [loggedInAddress, setLoggedInAddress] = useState<string | null>(null);
@@ -112,37 +113,16 @@ export default function Home() {
   });
 
   return (
-    <div className='p-20 bg-gray-600'>
+    <div className='p-20 bg-pattern bg-cover'>
+      <Navbar isSignedIn={isSignedIn} loggedInAddress={loggedInAddress} loggedInName={loggedInName} loggedInProfilePic={loggedInProfilePic} handleSignIn={handleSignIn} handleSignOut={handleSignOut} /> 
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className='text-5xl'>MILAN APP</h1>
-        </div>
-        <div className="flex items-center space-x-4">
-          {isSignedIn && (
-            <div>
-              <Link href='/createPost'>
-                <button className="bg-green-500 text-white px-4 py-2 rounded-md">Create Post</button>
-              </Link>
-              <Link href='/pages/'>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-md">Edit Profile</button>
-              </Link>
-            </div>
-          )}
-          {!isSignedIn ? (
-            <button onClick={handleSignIn} className="bg-blue-500 text-white px-4 py-2 rounded-md">Sign In</button>
-          ) : (
-            <div className="flex items-center space-x-4">
-              <div> {loggedInAddress}</div>
-              {loggedInName && <div>{loggedInName}</div>}
-              {loggedInProfilePic && <img src={loggedInProfilePic} alt="Profile" className="w-10 h-10 rounded-full" />}
-              <button onClick={handleSignOut} className="bg-red-500 text-white px-4 py-2 rounded-md">Sign Out</button>
-            </div>
-          )}
+          <h1 className="text-5xl text-white font-bold font-['Proxima_Nova']">MILAN APP</h1>
         </div>
       </div>
-      <h2 className="text-3xl font-bold mb-4">Current Posts</h2>
+      <h2 className="text-3xl font-bold mb-4 text-white">Current Posts</h2>
       {data ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-auto-row">
           {data.concat(profiles).map((profile, index) => (
             <Link href={`/profile/${profile.handle}`} key={index}>
               <div className='bg-gray-200 rounded-lg overflow-hidden shadow-md'>
@@ -171,7 +151,7 @@ export default function Home() {
         </div>
       ) : (
         <div className="flex justify-center items-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-gray-900"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white"></div>
         </div>
       )}
     </div>

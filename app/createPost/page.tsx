@@ -61,7 +61,7 @@ export default function CreatePost() {
 
 
   return (
-    <div className='p-20 bg-gray-600'>
+    <div className='p-20 bg-pattern text-white bg-center bg-cover'>
       <h1 className='text-5xl font-bold mb-8'>Create Post</h1>
       <div className="text-black mb-4">Logged In Address: {loggedInAddress}</div>
       <label className="block mb-2 text-lg">Post:</label>

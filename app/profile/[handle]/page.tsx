@@ -47,11 +47,10 @@ export default function Profile({
   if (loading) return <p className="p-14">Loading ...</p>;
 
   return (
-    <div>
-      <div className="p-14">
+      <div className="p-14 bg-pattern bg-cover">
         {!wallet && (
           <button
-            className="bg-white text-black px-14 py-4 rounded-full mb-4"
+            className="text-white px-14 py-4 rounded-full mb-4"
             onClick={onLoginClick}
           >
             Sign In
@@ -65,7 +64,7 @@ export default function Profile({
               wallet={wallet}
             />
             <button
-              className="ml-4 bg-white text-black px-14 py-4 rounded-full mb-4"
+              className="ml-4 text-white px-14 py-4 rounded-full mb-4"
               onClick={logout}
             >
               Sign Out
@@ -85,7 +84,6 @@ export default function Profile({
         <h3 className="text-xl mb-4">{profile?.bio}</h3>
         {profile && <Publications profile={profile} />}
       </div>
-    </div>
   );
 }
 
@@ -134,7 +132,7 @@ function Publications({ profile }: { profile: Profile }) {
   return (
     <>
       {publications?.map((pub: any, index: number) => (
-        <div key={index} className="py-4 bg-zinc-900 rounded mb-3 px-4">
+        <div key={index} className="py-4 text-white rounded mb-3 px-4">
           <p>{pub.metadata.content}</p>
           {pub.metadata?.media[0]?.original &&
             ["image/jpeg", "image/png"].includes(

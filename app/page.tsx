@@ -85,6 +85,12 @@ export default function Home() {
     try {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
       const address = accounts[0];
+      await window.ethereum.request({
+      method: 'wallet_requestPermissions',
+      params: [{
+        eth_accounts: {}
+      }]
+    });
       setLoggedInAddress(address);
       const name = localStorage.getItem(address + '_name');
       const description = localStorage.getItem(address + '_description');

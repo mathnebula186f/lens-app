@@ -4,7 +4,7 @@ import { useState ,useEffect} from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function EditProfile({setLoggedInName, setLoggedInDescription }) {
+export default function EditProfile() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [profilePic, setProfilePic] = useState<File | null>(null);

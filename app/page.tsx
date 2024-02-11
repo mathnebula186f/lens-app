@@ -115,7 +115,7 @@ export default function Home() {
   };
 
   const { data } = useExploreProfiles({
-    limit: 5
+    limit: 25
   });
 
   return (

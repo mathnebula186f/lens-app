@@ -48,14 +48,6 @@ export default function Profile({
 
   return (
       <div className="p-14 bg-pattern bg-cover">
-        {!wallet && (
-          <button
-            className="text-white px-14 py-4 rounded-full mb-4"
-            onClick={onLoginClick}
-          >
-            Sign In
-          </button>
-        )}
         {wallet && profile && (
           <>
             <FollowComponent

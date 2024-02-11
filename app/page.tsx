@@ -114,46 +114,48 @@ export default function Home() {
 
   return (
     <div className='p-20 bg-pattern bg-cover'>
-      <Navbar isSignedIn={isSignedIn} loggedInAddress={loggedInAddress} loggedInName={loggedInName} loggedInProfilePic={loggedInProfilePic} handleSignIn={handleSignIn} handleSignOut={handleSignOut} /> 
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-5xl text-white font-bold font-['Proxima_Nova']">MILAN APP</h1>
+      <Navbar isSignedIn={isSignedIn} loggedInAddress={loggedInAddress} loggedInName={loggedInName} loggedInProfilePic={loggedInProfilePic} handleSignIn={handleSignIn} handleSignOut={handleSignOut} />
+      <div className="container mx-auto">
+        <div className="text-center mb-8">
+          <h1 className="text-5xl font-bold text-white">MILAN APP</h1>
         </div>
-      </div>
-      <h2 className="text-3xl font-bold mb-4 text-white">Current Posts</h2>
-      {data ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 grid-auto-row">
+        <h2 className="text-3xl font-bold mb-4 text-white">Current Posts</h2>
+        {data ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {data.concat(profiles).map((profile, index) => (
             <Link href={`/profile/${profile.handle}`} key={index}>
-              <div className='bg-gray-200 rounded-lg overflow-hidden shadow-md'>
+              <div className='bg-white rounded-lg overflow-hidden shadow-md cursor-pointer transition duration-300 hover:shadow-lg'>
                 <div className="p-4">
                   {profile.picture && profile.picture.__typename === 'MediaSet' ? (
                     <img
                       src={formatPicture(profile.picture)}
-                      className="w-full h-auto rounded-full max-w-48 max-h-48 object-cover"
+                      className="w-full h-auto rounded-full max-w-48 max-h-48 object-cover mx-auto"
                       alt={profile.handle}
                     />
-                  ) : <div className="w-full h-auto bg-slate-500 rounded-full">
-                    <img
-                      src={formatPicture(profile.picture)}
-                      className="w-full h-auto rounded-full max-w-48 max-h-48 object-cover"
-                      alt={profile.handle}
-                    />
-                    </div>}
+                  ) : (
+                    <div className="w-full h-auto rounded-full mx-auto">
+                      <img
+                        src={formatPicture(profile.picture)}
+                        className="w-full h-auto rounded-full max-w-48 max-h-48 object-cover"
+                        alt={profile.handle}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className="px-4 py-2">
                   <h3 className="text-xl font-semibold text-black">{profile.handle}</h3>
-                  <h3 className="text-xl font-semibold text-black">{profile.bio}</h3>
+                  <p className="text-gray-600">{profile.bio}</p>
                 </div>
               </div>
             </Link>
           ))}
-        </div>
-      ) : (
-        <div className="flex justify-center items-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white"></div>
-        </div>
-      )}
+        </div>        
+        ) : (
+          <div className="flex justify-center items-center h-48">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white"></div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

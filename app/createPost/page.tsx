@@ -61,24 +61,26 @@ export default function CreatePost() {
 
 
   return (
-    <div className='p-20 bg-pattern text-white bg-center bg-cover'>
-      <h1 className='text-5xl font-bold mb-8'>Create Post</h1>
-      <div className="text-black mb-4">Logged In Address: {loggedInAddress}</div>
-      <label className="block mb-2 text-lg">Post:</label>
-      <textarea
-        value={post}
-        onChange={(e) => setPost(e.target.value)}
-        className="w-full border rounded-md px-4 py-2 mb-4 text-black"
-      />
-      <button
-        onClick={handleSubmit}
-        className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600"
-      >
-        Submit
+  <div className='p-20 bg-pattern text-white bg-cover'>
+    <h1 className='text-5xl font-bold mb-8'>Create Post</h1>
+    <div className="text-black mb-4">Logged In Address: {loggedInAddress}</div>
+    <label className="block mb-2 text-lg">Post:</label>
+    <textarea
+      value={post}
+      onChange={(e) => setPost(e.target.value)}
+      className="w-full border rounded-md px-4 py-2 mb-4 text-black"
+    />
+    <button
+      onClick={handleSubmit}
+      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    >
+      Submit
+    </button>
+    <Link href='/'>
+      <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2 focus:outline-none focus:shadow-outline">
+        HomePage
       </button>
-      <Link href='/'>
-        <button>HomePage</button>
-      </Link>
-    </div>
+    </Link>
+  </div>
   );
 }

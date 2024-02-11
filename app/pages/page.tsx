@@ -86,7 +86,6 @@ export default function EditProfile({setLoggedInName, setLoggedInDescription }) 
 
   return (
     <div className='p-20 bg-pattern bg-cover text-white'>
-      
       <h1 className='text-5xl font-bold mb-8'>Edit Profile</h1>
       <h1 className='text-4xl font-bold mb-8'>{loggedInAddress}</h1>
       <div className="text-black mb-4">Address: {loggedInAddress}</div>

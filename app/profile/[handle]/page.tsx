@@ -47,7 +47,7 @@ export default function Profile({
   if (loading) return <p className="p-14">Loading ...</p>;
 
   return (
-      <div className="p-14 bg-pattern bg-cover">
+      <div className="p-14 bg-pattern bg-cover text-white">
         {wallet && profile && (
           <>
             <FollowComponent

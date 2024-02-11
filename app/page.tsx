@@ -26,9 +26,9 @@ export default function Home() {
       setLoggedInProfilePic(profilePic); // Set profile picture state
       setIsSignedIn(true);
     }
-    window.ethereum.on('accountsChanged', handleAccountsChanged);
+    (window as any).ethereum.on('accountsChanged', handleAccountsChanged);
     return () => {
-      window.ethereum.off('accountsChanged', handleAccountsChanged);
+      (window as any).ethereum.off('accountsChanged', handleAccountsChanged);
     };
   }, []);
 
@@ -83,9 +83,9 @@ export default function Home() {
 
   const handleSignIn = async () => {
     try {
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
       const address = accounts[0];
-      await window.ethereum.request({
+      await (window as any).ethereum.request({
       method: 'wallet_requestPermissions',
       params: [{
         eth_accounts: {}

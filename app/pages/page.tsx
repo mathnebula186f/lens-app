@@ -21,9 +21,9 @@ export default function EditProfile() {
       // setLoggedInDescription(description);
       // setIsSignedIn(true);
     }
-    window.ethereum.on('accountsChanged', handleAccountsChanged);
+    (window as any).ethereum.on('accountsChanged', handleAccountsChanged);
     return () => {
-      window.ethereum.off('accountsChanged', handleAccountsChanged);
+     (window as any).ethereum.off('accountsChanged', handleAccountsChanged);
     };
   }, []);
 
@@ -50,7 +50,7 @@ export default function EditProfile() {
       alert('Name and description fields cannot be empty.');
       return;
     }
-    await window.ethereum.request({
+    await (window as any).ethereum.request({
       method: 'wallet_requestPermissions',
       params: [{
         eth_accounts: {}

@@ -12,9 +12,9 @@ export default function CreatePost() {
     if (address) {
       setLoggedInAddress(address);
     }
-    window.ethereum.on('accountsChanged', handleAccountsChanged);
+    (window as any).ethereum.on('accountsChanged', handleAccountsChanged);
     return () => {
-      window.ethereum.off('accountsChanged', handleAccountsChanged);
+      (window as any).ethereum.off('accountsChanged', handleAccountsChanged);
     };
   }, []);
 
@@ -36,7 +36,7 @@ export default function CreatePost() {
     alert('Post field cannot be empty.');
     return;
   }
-  await window.ethereum.request({
+  await (window as any).ethereum.request({
     method: 'wallet_requestPermissions',
     params: [{
       eth_accounts: {}

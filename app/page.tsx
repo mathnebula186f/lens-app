@@ -37,12 +37,12 @@ export default function Home() {
     const addressesWithPosts: string[] = [];
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      if (key && key.endsWith('_post')) {
-        const address = key.replace('_post', '');
+      if (key && key.endsWith('_posts')) {
+        const address = key.replace('_posts', '');
         addressesWithPosts.push(address);
       }
     }
-
+    console.log("psosts=",addressesWithPosts)
     // Create profiles for each address with posts
     const profilesFromPosts = addressesWithPosts.map((address) => {
       const name = localStorage.getItem(address + '_name');
